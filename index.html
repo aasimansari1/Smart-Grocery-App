@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Grocery App</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Chart.js for the category pie chart -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <div class="app">
+        <!-- Header -->
+        <header class="header">
+            <h1>Smart Grocery App</h1>
+            <button id="themeToggle" class="theme-btn" title="Toggle dark mode">
+                <span id="themeIcon">Dark</span>
+            </button>
+        </header>
+
+        <!-- Add Item Form -->
+        <section class="card form-card">
+            <h2>Add Item</h2>
+            <form id="itemForm" class="item-form">
+                <input
+                    type="text"
+                    id="itemName"
+                    placeholder="Item name (e.g. Apple)"
+                    autocomplete="off"
+                    required
+                />
+                <input
+                    type="number"
+                    id="itemPrice"
+                    placeholder="Price"
+                    step="0.01"
+                    min="0"
+                    required
+                />
+                <input
+                    type="number"
+                    id="itemQty"
+                    placeholder="Qty"
+                    min="1"
+                    value="1"
+                    required
+                />
+                <button type="submit" id="submitBtn">Add</button>
+                <button type="button" id="cancelEditBtn" class="cancel-btn hidden">Cancel</button>
+            </form>
+            <p id="formError" class="error-msg"></p>
+        </section>
+
+        <!-- Stats / Summary -->
+        <section class="card stats">
+            <div class="stat">
+                <span class="stat-label">Total Items</span>
+                <span class="stat-value" id="totalItems">0</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label">Total Cost</span>
+                <span class="stat-value" id="totalCost">$0.00</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label">Categories</span>
+                <span class="stat-value" id="totalCategories">0</span>
+            </div>
+        </section>
+
+        <!-- Search/Filter -->
+        <section class="card filter-card">
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search items..."
+                autocomplete="off"
+            />
+            <select id="categoryFilter">
+                <option value="all">All Categories</option>
+                <option value="Fruits">Fruits</option>
+                <option value="Vegetables">Vegetables</option>
+                <option value="Dairy">Dairy</option>
+                <option value="Snacks">Snacks</option>
+                <option value="Others">Others</option>
+            </select>
+        </section>
+
+        <!-- Item List -->
+        <section class="card list-card">
+            <h2>Grocery List</h2>
+            <div class="table-wrapper">
+                <table class="grocery-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>Qty</th>
+                            <th>Subtotal</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="itemsTbody">
+                        <!-- Items injected by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+            <p id="emptyMsg" class="empty-msg">No items yet. Add your first grocery item above!</p>
+        </section>
+
+        <!-- Chart -->
+        <section class="card chart-card">
+            <h2>Spending by Category</h2>
+            <div class="chart-wrapper">
+                <canvas id="categoryChart"></canvas>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

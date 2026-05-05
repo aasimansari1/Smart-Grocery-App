@@ -1,0 +1,314 @@
+/* ============================
+   Smart Grocery App — styles
+   ============================ */
+
+/* Theme variables: light mode by default */
+:root {
+    --bg: #f4f6fa;
+    --card-bg: #ffffff;
+    --text: #1f2937;
+    --text-muted: #6b7280;
+    --border: #e5e7eb;
+    --primary: #4f46e5;
+    --primary-hover: #4338ca;
+    --danger: #ef4444;
+    --danger-hover: #dc2626;
+    --success: #10b981;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    --radius: 12px;
+}
+
+/* Dark mode overrides */
+body.dark {
+    --bg: #0f172a;
+    --card-bg: #1e293b;
+    --text: #f1f5f9;
+    --text-muted: #94a3b8;
+    --border: #334155;
+    --primary: #6366f1;
+    --primary-hover: #818cf8;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Reset / base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 20px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.app {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.header h1 {
+    font-size: 1.8rem;
+    color: var(--primary);
+}
+
+.theme-btn {
+    background: var(--card-bg);
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 8px 16px;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.theme-btn:hover {
+    background: var(--primary);
+    color: #fff;
+    border-color: var(--primary);
+}
+
+/* Card layout for sections */
+.card {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.card h2 {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+    color: var(--text);
+}
+
+/* Add Item form */
+.item-form {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr auto auto;
+    gap: 10px;
+}
+
+.item-form input,
+.filter-card input,
+.filter-card select {
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.item-form input:focus,
+.filter-card input:focus,
+.filter-card select:focus {
+    border-color: var(--primary);
+}
+
+.item-form button,
+.cancel-btn {
+    padding: 10px 18px;
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.item-form button:hover {
+    background: var(--primary-hover);
+}
+
+.cancel-btn {
+    background: var(--text-muted);
+}
+
+.cancel-btn:hover {
+    background: var(--danger);
+}
+
+.hidden {
+    display: none !important;
+}
+
+.error-msg {
+    color: var(--danger);
+    margin-top: 10px;
+    font-size: 0.9rem;
+    min-height: 1.2em;
+}
+
+/* Stats summary */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    text-align: center;
+}
+
+.stat {
+    padding: 10px;
+    border-right: 1px solid var(--border);
+}
+
+.stat:last-child {
+    border-right: none;
+}
+
+.stat-label {
+    display: block;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+/* Filter section */
+.filter-card {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 10px;
+}
+
+/* Grocery table */
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.grocery-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+.grocery-table th,
+.grocery-table td {
+    padding: 12px 10px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+.grocery-table th {
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.grocery-table tbody tr:hover {
+    background: var(--bg);
+}
+
+/* Category badge */
+.cat-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #fff;
+}
+
+.cat-Fruits { background: #f59e0b; }
+.cat-Vegetables { background: #10b981; }
+.cat-Dairy { background: #3b82f6; }
+.cat-Snacks { background: #ec4899; }
+.cat-Others { background: #6b7280; }
+
+/* Action buttons in table rows */
+.action-btn {
+    background: none;
+    border: 1px solid var(--border);
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    color: var(--text);
+    margin-right: 5px;
+    transition: all 0.2s;
+}
+
+.action-btn.edit:hover {
+    background: var(--primary);
+    color: #fff;
+    border-color: var(--primary);
+}
+
+.action-btn.delete:hover {
+    background: var(--danger);
+    color: #fff;
+    border-color: var(--danger);
+}
+
+.empty-msg {
+    text-align: center;
+    color: var(--text-muted);
+    padding: 20px;
+    font-style: italic;
+}
+
+/* Chart */
+.chart-wrapper {
+    position: relative;
+    max-width: 400px;
+    margin: 0 auto;
+    height: 300px;
+}
+
+/* Responsive: tablet & mobile */
+@media (max-width: 768px) {
+    .item-form {
+        grid-template-columns: 1fr 1fr;
+    }
+    .item-form input:first-child {
+        grid-column: 1 / -1;
+    }
+    .item-form button {
+        grid-column: 1 / -1;
+    }
+    .stats {
+        grid-template-columns: 1fr;
+    }
+    .stat {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        padding: 12px;
+    }
+    .stat:last-child {
+        border-bottom: none;
+    }
+    .filter-card {
+        grid-template-columns: 1fr;
+    }
+    .header h1 {
+        font-size: 1.4rem;
+    }
+}
